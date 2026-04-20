@@ -1874,18 +1874,17 @@
 
     var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyN5Em4mkpkL6MDFerMwbdC_v845tkHCvpOu-XcAsi0ApAzGgX14kz1b3vE5sy7NFBOyg/exec';
 
-    fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({
-        nome: nome,
-        whatsapp: whatsapp,
-        negocio: negocio,
-        social: social,
-        faturamento: faturamento,
-        trafego: trafego
-      }).toString()
+    var params = new URLSearchParams({
+      nome: nome,
+      whatsapp: whatsapp,
+      negocio: negocio,
+      social: social,
+      faturamento: faturamento,
+      trafego: trafego
+    });
+    fetch(SCRIPT_URL + '?' + params.toString(), {
+      method: 'GET',
+      mode: 'no-cors'
     });
 
     window.open('https://wa.me/5521969190809?text=' + encodeURIComponent(msg), '_blank');
