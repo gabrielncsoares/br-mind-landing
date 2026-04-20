@@ -15,9 +15,9 @@
       --black:  #000000;
       --white:  #ffffff;
       --gray-dark: #272727;
-      --shadow-sm: 4px 4px 0px 0px #000;
-      --shadow-md: 8px 8px 0px 0px #000;
-      --shadow-lg: 12px 12px 0px 0px #000;
+      --shadow-sm: none;
+      --shadow-md: none;
+      --shadow-lg: none;
       --border:  2px solid #000;
     }
 
@@ -73,13 +73,20 @@
       color: var(--white);
       box-shadow: var(--shadow-md);
     }
-    .btn-primary:hover { transform: translate(4px,4px); box-shadow: 4px 4px 0px 0px #000; }
+    .btn-primary:hover { transform: translate(4px,4px); }
     .btn-secondary {
       background: var(--white);
       color: var(--black);
       box-shadow: var(--shadow-sm);
     }
     .btn-secondary:hover { transform: translate(4px,4px); box-shadow: none; }
+    .btn-yellow {
+      background: #eff143;
+      color: var(--black);
+      border: none;
+      box-shadow: none !important;
+    }
+    .btn-yellow:hover { transform: translate(2px,2px); box-shadow: none !important; }
 
     /* ── NAV ── */
     nav {
@@ -87,7 +94,7 @@
       top: 0; left: 0; right: 0;
       z-index: 100;
       height: 80px;
-      background: var(--blue);
+      background: var(--purple);
       border-bottom: var(--border);
       display: flex;
       align-items: center;
@@ -150,7 +157,7 @@
       width: 100%;
       max-width: 1200px;
       margin: 0 auto;
-      align-items: start;
+      align-items: stretch;
     }
     .hero-badge {
       display: inline-flex;
@@ -165,7 +172,6 @@
       border: var(--border);
       border-radius: 999px;
       margin-bottom: 24px;
-      box-shadow: 3px 3px 0px 0px #000;
       letter-spacing: 0.02em;
     }
     .badge-dot { width: 8px; height: 8px; background: #3A2F7A; border-radius: 50%; }
@@ -215,6 +221,17 @@
       font-size: 0.8rem;
       color: rgba(255,255,255,0.6);
       font-weight: 500;
+    }
+
+    /* ── HERO MOCKUP COLUMN ── */
+    .hero-mockup {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .hero-mockup .browser-wrap {
+      width: 100%;
     }
 
     /* ── BROWSER MOCKUP ── */
@@ -283,7 +300,6 @@
       border: 1.5px solid #000;
       border-radius: 8px;
       padding: 12px;
-      box-shadow: 3px 3px 0px 0px #000;
     }
     .dash-card-label { font-size: 0.65rem; font-weight: 700; color: #666; margin-bottom: 4px; }
     .dash-card-val {
@@ -299,7 +315,6 @@
       border: 1.5px solid #000;
       border-radius: 8px;
       padding: 12px;
-      box-shadow: 3px 3px 0px 0px #000;
       display: flex;
       flex-direction: column;
       gap: 6px;
@@ -323,7 +338,6 @@
       border: 1.5px solid #000;
       border-radius: 8px;
       padding: 12px;
-      box-shadow: 3px 3px 0px 0px #000;
     }
     .dash-leads-title { font-size: 0.65rem; font-weight: 700; color: rgba(255,255,255,0.8); margin-bottom: 8px; }
     .lead-row {
@@ -499,7 +513,6 @@
     }
     .feat-card:hover {
       transform: translate(-2px,-2px);
-      box-shadow: 6px 6px 0px 0px #000;
     }
     .feat-icon-box {
       width: 56px; height: 56px;
@@ -813,7 +826,18 @@
       transition: box-shadow 0.15s ease;
       appearance: none;
     }
-    .cta-input:focus { box-shadow: 4px 4px 0px 0px #000; }
+    .cta-input:focus { outline: 2px solid #000; outline-offset: 2px; }
+    .cta-input.error { border-color: #e53e3e; }
+    .field-error {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #e53e3e;
+      margin-top: 4px;
+      display: none;
+    }
+    .field-error.visible { display: block; }
+    .field-label .req { color: #e53e3e; }
     .cta-input::placeholder { color: #c0c0c0; }
     .cta-input option { color: var(--black); }
 
@@ -889,6 +913,103 @@
       margin-top: 48px;
     }
 
+    /* ── FOUNDER CHIP ── */
+    .hero-founder-chip {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 28px;
+      padding: 6px 48px 6px 6px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 70px;
+      width: fit-content;
+      backdrop-filter: blur(8px);
+    }
+    .hero-founder-chip img {
+      width: 108px;
+      height: 108px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top center;
+      border: 2px solid rgba(255,255,255,0.55);
+      flex-shrink: 0;
+    }
+    .hero-founder-chip-name {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .hero-founder-chip-role {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+      font-weight: 500;
+    }
+
+    /* ── METRIC CARDS ── */
+    .metric-card {
+      position: absolute;
+      z-index: 3;
+      border: 2px solid #000;
+      border-radius: 14px;
+      padding: 14px 18px;
+      min-width: 152px;
+    }
+    .metric-card-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .metric-card-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    .metric-card-label {
+      font-size: 0.58rem;
+      font-weight: 700;
+      font-family: 'Satoshi', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .metric-card-num {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .metric-card-trend {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 7px;
+    }
+    .metric-card-trend-val {
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+    .metric-card-trend-sub {
+      font-size: 0.62rem;
+      font-family: 'Satoshi', sans-serif;
+    }
+    .metric-card-bars {
+      display: flex;
+      gap: 3px;
+      align-items: flex-end;
+      margin-top: 8px;
+    }
+    .metric-card-bar {
+      width: 6px;
+      border-radius: 2px;
+    }
+
     /* ── SECTION WRAPPERS ── */
     .section-wrapper { max-width: 1200px; margin: 0 auto; }
     .text-center { text-align: center; }
@@ -904,6 +1025,18 @@
     }
     @media (max-width: 640px) {
       .nav-links { display: none; }
+      nav { justify-content: center; }
+      .nav-inner { justify-content: center; }
+      #hero { text-align: center; }
+      .hero-title .outline {
+        -webkit-text-stroke: 2.5px var(--white);
+        letter-spacing: 0.06em;
+      }
+      .hero-badge { margin-left: auto; margin-right: auto; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-cta { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .hero-founder-chip--mobile { margin-left: auto; margin-right: auto; }
       .bento-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
       .hero-mockup { display: none; }
@@ -1087,6 +1220,7 @@
       }
     }
     @media (min-width: 641px) {
+      .hero-founder-chip--mobile { display: none; }
       .how-dots { display: none; }
       .feat-dots { display: none; }
       .ps-dots { display: none; }
@@ -1103,7 +1237,7 @@
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-logo">
-      <img src="logo.png" alt="BR Mind" style="height:38px; width:auto;">
+      <img src="logo.png" alt="BR Mind" style="height:180px; width:auto; margin: -50px 0;">
     </a>
     <ul class="nav-links">
       <li><a href="#features">Serviço</a></li>
@@ -1111,9 +1245,6 @@
       <li><a href="#personas">Para Quem</a></li>
       <li><a href="#testimonials">Resultados</a></li>
     </ul>
-    <a href="https://wa.me/5521969190809?text=Quero%20meu%20diagn%C3%B3stico%20gratuito" target="_blank" class="btn btn-primary" style="font-size:0.85rem; padding:0.65rem 1.2rem;">
-      Quero meu diagnóstico
-    </a>
   </div>
 </nav>
 
@@ -1137,17 +1268,26 @@
         A BR Mind escala negócios locais com tráfego pago — do primeiro lead qualificado até a previsibilidade real de faturamento.
       </p>
       <div class="hero-cta">
-        <a href="#cta" class="btn btn-primary" style="box-shadow: 8px 8px 0px 0px #000; font-size:1rem;">
+        <a href="#cta" class="btn btn-yellow" style="font-size:1rem;">
           Quero saber meu diagnóstico
         </a>
         <a href="#how" class="btn btn-secondary">
           Como funciona →
         </a>
       </div>
+
+      <div class="hero-founder-chip hero-founder-chip--mobile">
+        <img src="gabriel.png" alt="Gabriel Nicácio">
+        <div>
+          <div class="hero-founder-chip-name">Gabriel Nicácio</div>
+          <div class="hero-founder-chip-role">Fundador · BR Mind</div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- RIGHT: BROWSER MOCKUP -->
-    <div class="hero-mockup" style="margin-top: 5.5rem;">
+    <!-- RIGHT: DASHBOARD + CHIP -->
+    <div class="hero-mockup">
       <div class="browser-wrap">
         <div class="browser-bar">
           <div class="dot-r"></div>
@@ -1190,6 +1330,13 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="hero-founder-chip">
+        <img src="gabriel.png" alt="Gabriel Nicácio">
+        <div>
+          <div class="hero-founder-chip-name">Gabriel Nicácio</div>
+          <div class="hero-founder-chip-role">Fundador · BR Mind</div>
         </div>
       </div>
     </div>
@@ -1289,7 +1436,7 @@
       </div>
     </div>
     <div class="section-cta">
-      <a href="#cta" class="btn btn-primary" style="box-shadow: var(--shadow-md);">Quero saber meu diagnóstico</a>
+      <a href="#cta" class="btn btn-yellow">Quero saber meu diagnóstico</a>
     </div>
     <div class="ps-dots" id="ps-dots">
       <div class="ps-dot active" onclick="scrollToCard(0)"></div>
@@ -1339,7 +1486,7 @@
     </div>
   </div>
   <div class="section-cta">
-    <a href="#cta" class="btn btn-secondary" style="box-shadow: var(--shadow-md);">Quero saber meu diagnóstico</a>
+    <a href="#cta" class="btn btn-yellow">Quero saber meu diagnóstico</a>
   </div>
   <div class="feat-dots" id="feat-dots">
     <div class="feat-dot active" onclick="scrollToFeat(0)"></div>
@@ -1385,7 +1532,7 @@
     </div>
   </div>
   <div class="section-cta">
-    <a href="#cta" class="btn btn-secondary" style="box-shadow: var(--shadow-md);">Quero saber meu diagnóstico</a>
+    <a href="#cta" class="btn btn-yellow">Quero saber meu diagnóstico</a>
   </div>
   <div class="how-dots" id="how-dots">
     <div class="how-dot active" onclick="scrollToHow(0)"></div>
@@ -1420,7 +1567,7 @@
     </div>
   </div>
   <div class="section-cta">
-    <a href="#cta" class="btn btn-primary" style="box-shadow: var(--shadow-md);">Quero saber meu diagnóstico</a>
+    <a href="#cta" class="btn btn-yellow">Quero saber meu diagnóstico</a>
   </div>
   <div class="bento-dots" id="bento-dots">
     <div class="bento-dot active" onclick="scrollToBento(0)"></div>
@@ -1476,7 +1623,7 @@
     </div>
   </div>
   <div class="section-cta">
-    <a href="#cta" class="btn btn-secondary" style="box-shadow: var(--shadow-md);">Quero saber meu diagnóstico</a>
+    <a href="#cta" class="btn btn-yellow">Quero saber meu diagnóstico</a>
   </div>
   <div class="testi-dots" id="testi-dots">
     <div class="testi-dot active" onclick="scrollToTesti(0)"></div>
@@ -1505,27 +1652,31 @@
       <div class="cta-form-fields">
         <div class="cta-form-row">
           <div>
-            <label class="field-label">Seu nome*</label>
+            <label class="field-label">Seu nome<span class="req">*</span></label>
             <input type="text" id="f-nome" class="cta-input" placeholder="João Silva">
+            <span class="field-error" id="f-nome-error">Preencha seu nome</span>
           </div>
           <div>
-            <label class="field-label">WhatsApp*</label>
+            <label class="field-label">WhatsApp<span class="req">*</span></label>
             <input type="text" id="f-whatsapp" class="cta-input" placeholder="(21) 99999-9999">
+            <span class="field-error" id="f-whatsapp-error">Preencha seu WhatsApp</span>
           </div>
         </div>
         <div class="cta-form-row">
           <div>
-            <label class="field-label">Tipo de negócio*</label>
+            <label class="field-label">Tipo de negócio<span class="req">*</span></label>
             <input type="text" id="f-negocio" class="cta-input" placeholder="Ex: Clínica odontológica, consultoria, escritório de advocacia, restaurante, etc.">
+            <span class="field-error" id="f-negocio-error">Preencha o tipo de negócio</span>
           </div>
           <div>
-            <label class="field-label">Rede social</label>
+            <label class="field-label">Rede social<span class="req">*</span></label>
             <input type="text" id="f-social" class="cta-input" placeholder="@ do Instagram">
+            <span class="field-error" id="f-social-error">Preencha sua rede social</span>
           </div>
         </div>
         <div class="cta-form-row">
           <div>
-            <label class="field-label">Faturamento mensal atual</label>
+            <label class="field-label">Faturamento mensal atual<span class="req">*</span></label>
             <select id="f-faturamento" class="cta-input">
               <option value="" disabled selected>Selecione</option>
               <option>Até R$ 15.000/mês</option>
@@ -1534,18 +1685,20 @@
               <option>R$ 80.000 – R$ 200.000/mês</option>
               <option>Acima de R$ 200.000/mês</option>
             </select>
+            <span class="field-error" id="f-faturamento-error">Selecione o faturamento</span>
           </div>
           <div>
-            <label class="field-label">Já investiu em tráfego pago?</label>
+            <label class="field-label">Já investiu em tráfego pago?<span class="req">*</span></label>
             <select id="f-trafego" class="cta-input">
               <option value="" disabled selected>Selecione</option>
               <option>Sim, mas não tive resultado</option>
               <option>Sim, mas tive algum resultado</option>
               <option>Não, nunca investi</option>
             </select>
+            <span class="field-error" id="f-trafego-error">Selecione uma opção</span>
           </div>
         </div>
-        <button onclick="submitDiagnostico()" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:8px; box-shadow:6px 6px 0px 0px #000;">
+        <button onclick="submitDiagnostico()" class="btn btn-yellow" style="width:100%; justify-content:center; margin-top:8px;">
           Quero meu diagnóstico completo →
         </button>
       </div>
@@ -1560,7 +1713,7 @@
   <div class="footer-grid">
     <div class="footer-brand">
       <div style="margin-bottom:14px;">
-        <img src="logo.png" alt="BR Mind" style="height:38px; width:auto;">
+        <img src="logo.png" alt="BR Mind" style="height:180px; width:auto; margin: -50px 0;">
       </div>
       <p class="footer-desc">Escalamos negócios locais através do Meta Ads — estruturando presença digital completa para gerar leads qualificados com previsibilidade.</p>
       <div class="social-icons">
@@ -1578,11 +1731,6 @@
         <li><a href="https://wa.me/5521969190809" target="_blank">(21) 96919-0809</a></li>
         <li><a href="https://instagram.com/br_mind_" target="_blank">@br_mind_</a></li>
         <li><a href="#">Niterói — RJ</a></li>
-        <li style="margin-top:16px;">
-          <a href="https://wa.me/5521969190809?text=Quero%20meu%20diagn%C3%B3stico%20gratuito" target="_blank" class="btn btn-primary" style="font-size:0.82rem; padding:0.6rem 1.1rem;">
-            Diagnóstico Gratuito
-          </a>
-        </li>
       </ul>
     </div>
   </div>
@@ -1669,13 +1817,50 @@
   }
 
   // Formulário → WhatsApp
+  var requiredFields = ['f-nome', 'f-whatsapp', 'f-negocio', 'f-social', 'f-faturamento', 'f-trafego'];
+
+  requiredFields.forEach(function(id) {
+    document.getElementById(id).addEventListener('input', function() {
+      if (this.value.trim()) {
+        this.classList.remove('error');
+        var err = document.getElementById(id + '-error');
+        if (err) err.classList.remove('visible');
+      }
+    });
+    document.getElementById(id).addEventListener('change', function() {
+      if (this.value.trim()) {
+        this.classList.remove('error');
+        var err = document.getElementById(id + '-error');
+        if (err) err.classList.remove('visible');
+      }
+    });
+  });
+
   function submitDiagnostico() {
-    var nome       = document.getElementById('f-nome').value || 'Não informado';
-    var whatsapp   = document.getElementById('f-whatsapp').value || 'Não informado';
-    var negocio    = document.getElementById('f-negocio').value || 'Não informado';
-    var social     = document.getElementById('f-social').value || 'Não informado';
-    var faturamento = document.getElementById('f-faturamento').value || 'Não informado';
-    var trafego    = document.getElementById('f-trafego').value || 'Não informado';
+    var hasError = false;
+
+    requiredFields.forEach(function(id) {
+      var el = document.getElementById(id);
+      var err = document.getElementById(id + '-error');
+      if (!el.value.trim()) {
+        el.classList.add('error');
+        if (err) err.classList.add('visible');
+        hasError = true;
+      }
+    });
+
+    if (hasError) {
+      var first = document.querySelector('.cta-input.error');
+      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    var nome        = document.getElementById('f-nome').value;
+    var whatsapp    = document.getElementById('f-whatsapp').value;
+    var negocio     = document.getElementById('f-negocio').value;
+    var social      = document.getElementById('f-social').value;
+    var faturamento = document.getElementById('f-faturamento').value;
+    var trafego     = document.getElementById('f-trafego').value;
 
     var msg = 'Olá! Quero meu diagnóstico completo.\n\n' +
       '👤 Nome: ' + nome + '\n' +
