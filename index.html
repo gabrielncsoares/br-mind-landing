@@ -1882,10 +1882,7 @@
       faturamento: faturamento,
       trafego: trafego
     });
-    fetch(SCRIPT_URL + '?' + params.toString(), {
-      method: 'GET',
-      mode: 'no-cors'
-    });
+    new Image().src = SCRIPT_URL + '?' + params.toString();
 
     window.open('https://wa.me/5521969190809?text=' + encodeURIComponent(msg), '_blank');
   }
